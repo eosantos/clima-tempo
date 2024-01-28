@@ -16,17 +16,19 @@ const Titulo: React.FC<TituloProps> = ({ boldWords = [], text }) => {
   const words = text.split(' ');
 
   return (
-    <StyledTitulo>
-      {words.map((word, index) => (
-        <span
-          key={index}
-          style={{ fontWeight: boldWords.includes(word) ? 'bold' : 'normal' }}
-        >
-          {word}
-          {index < words.length - 1 && ' '}
-        </span>
-      ))}
-    </StyledTitulo>
+    <>
+      <StyledTitulo>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            style={{ fontWeight: boldWords.includes(word) ? 'bold' : 'normal' }}
+          >
+            {word}
+            {index < words.length - 1 && ' '}
+          </span>
+        ))}
+      </StyledTitulo>
+    </>
   );
 };
 

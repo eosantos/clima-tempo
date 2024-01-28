@@ -7,7 +7,7 @@ interface SubTituloProps {
   color?: string;
 }
 
-const StyledSubTitulo = styled.h1<{ bold?: boolean }>`
+const StyledSubTitulo = styled.h2<{ bold?: boolean }>`
   font-size: 18px;
   font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
   color: #9c9c9c;
