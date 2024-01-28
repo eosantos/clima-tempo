@@ -1,21 +1,21 @@
 'use client';
 import styled from 'styled-components';
 
-interface TitleProps {
+interface TituloProps {
   boldWords?: string[];
   text: string;
 }
 
-const StyledTitle = styled.h1`
+const StyledTitulo = styled.h1`
   font-size: 24px;
   color: #439c99;
 `;
 
-const Title: React.FC<TitleProps> = ({ boldWords = [], text }) => {
+const Titulo: React.FC<TituloProps> = ({ boldWords = [], text }) => {
   const words = text.split(' ');
 
   return (
-    <StyledTitle>
+    <StyledTitulo>
       {words.map((word, index) => (
         <span
           key={index}
@@ -25,8 +25,8 @@ const Title: React.FC<TitleProps> = ({ boldWords = [], text }) => {
           {index < words.length - 1 && ' '}
         </span>
       ))}
-    </StyledTitle>
+    </StyledTitulo>
   );
 };
 
-export default Title;
+export default Titulo;
