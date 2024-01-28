@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface TituloProps {
   boldWords?: string[];
   text: string;
+  color?: string;
 }
 
 const StyledTitulo = styled.h1`
