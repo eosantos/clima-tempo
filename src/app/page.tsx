@@ -1,14 +1,12 @@
-import Titulo from '@/components/Paragraph/Titulo';
-//import SubTitulo from '@/components/Paragraph/Subtitulo';
+import Header from "@/components/Header";
+
 //import Texto from '@/components/Paragraph/Texto';
+
 
 export default function Home() {
   return (
     <>
-      <Titulo 
-        text="Temperatura para São Paulo para os próximos 7 dias"
-        boldWords={['São', 'Paulo', '7', 'dias']}
-      />
+    <Header />
       {/* <SubTitulo bold text="26/07/2023" />
         <SubTitulo text="Quarta-Feira" />
         <Texto bold text="Temperatura" />
