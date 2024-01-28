@@ -8,7 +8,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderCard = styled.div`  
-  margin: 30px;
+  margin: 20px;
   padding-bottom: 20px;
   border-radius: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
