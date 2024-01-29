@@ -25,7 +25,7 @@ const getColor = (color?: TextoProps['color']): string => {
 };
 
 const StyledTexto = styled.h3<TextoProps>`
-  font-size: 18px;
+  font-size: 18px;  
   font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
   color: ${(props) => getColor(props.color)};
 `;

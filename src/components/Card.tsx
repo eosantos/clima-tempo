@@ -1,32 +1,37 @@
 'use client';
 import styled from 'styled-components';
+import Paragrafo from './Paragraph/Paragrafo';
+import SubTitulo from './Paragraph/Subtitulo';
+
+
 
 const CardContainer = styled.div`
   max-width: 290px;
   max-height: 215px;
-  margin: 0 auto;
+  margin: 0px auto;
 `;
 
 const CardWrapper = styled.div`
-  background-color: #439c99;
+  margin: 20px;
   padding: 10px;
-  border: 1px solid #439c99;
-  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 15px;
 `;
 
-const TopStripe = styled.div`
-  background-color: #439c99;
-  height: 5px;
-  border-radius: 8px 8px 0 0;
-`;
 
 const Card: React.FC = () => {
   return (
     <CardContainer>
       <CardWrapper>
-        <TopStripe />
-        {/* Conteúdo do card aqui */}
-        <p>Seu conteúdo aqui</p>
+        <Paragrafo text={'Sol e aumento de nuvens. Pancadas de chuva à tarde. À noite, muitas nuvens, mas sem chuva.'}/>
+        <SubTitulo bold={true} text={'25/07/2023'}/>
+        <SubTitulo text={'Terça-Feira'}/>
+        <SubTitulo text="Texto padrão" />
+        <SubTitulo text="Texto em #9c9c9c" color="#9c9c9c" />
+        <SubTitulo text="Texto em #439c99" color="#439c99" />
+        <SubTitulo text="Texto em #5dc0cb" color="#5dc0cb" />
+        <SubTitulo text="Texto em #d48c89" color="#d48c89" />
+        <SubTitulo text="Texto em #f19631" color="#f19631" />
       </CardWrapper>
     </CardContainer>
   );
