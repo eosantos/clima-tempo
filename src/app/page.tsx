@@ -6,8 +6,7 @@ import Card from "@/components/Card";
 export default function Home() {
   return (
     <>
-      <Header />
-      
+      <Header />      
       <Card />
     </>
   );
