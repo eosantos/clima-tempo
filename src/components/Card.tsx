@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Paragrafo from './Paragraph/Paragrafo';
 import SubTitulo from './Paragraph/Subtitulo';
 import Texto from './Paragraph/Texto';
+import Aviso from './Paragraph/Aviso';
 
 
 const CardContainer = styled.div`
@@ -24,7 +25,7 @@ const Card: React.FC = () => {
     <CardContainer>
       <CardWrapper>
         <SubTitulo boldWords={['25/07/2023']}text={'25/07/2023'} /> 
-        <SubTitulo text={'Terça-Feira da semana'}/>
+        <SubTitulo text={'Terça-Feira'}/>
         <Paragrafo text={'Sol e aumento de nuvens. Pancadas de chuva à tarde. À noite, muitas nuvens, mas sem chuva.'}/>
         <Texto text="Texto padrão" />
         <Texto text="Texto em #9c9c9c" color="#9c9c9c" />
@@ -32,6 +33,16 @@ const Card: React.FC = () => {
         <Texto text="Texto em #5dc0cb" color="#5dc0cb" />
         <Texto text="Texto em #d48c89" color="#d48c89" />
         <Texto text="Texto em #f19631" color="#f19631" />
+        
+        <div>
+          <Aviso
+            text="Temperatura deste dia será maior do que a média do período"
+            $textColorOption="color1"
+            $cardColorOption="color1"
+            $stripeColorOption="color1"
+          />
+        </div>
+
       </CardWrapper>
     </CardContainer>
   );
