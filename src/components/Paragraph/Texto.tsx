@@ -1,38 +1,19 @@
-'use client';
 import styled from 'styled-components';
 
 interface TextoProps {
-  bold?: boolean;
   text: string;
-  color?: 'default' | '#9c9c9c' | '#439c99' | '#5dc0cb' | '#d48c89' | '#f19631';
+  color: string;
 }
 
-const getColor = (color?: TextoProps['color']): string => {
-  switch (color) {
-    case '#9c9c9c':
-      return '#9c9c9c';
-    case '#439c99':
-      return '#439c99';
-    case '#5dc0cb':
-      return '#5dc0cb';
-    case '#d48c89':
-      return '#d48c89';
-    case '#f19631':
-      return '#f19631';
-    default:
-      return 'inherit';
-  }
-};
-
 const StyledTexto = styled.h3<TextoProps>`
-  font-size: 18px;  
-  font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
-  color: ${(props) => getColor(props.color)};
+  font-size: 12px;
+  font-weight: bold;
+  color: ${(props) => props.color || '#9c9c9c'};
 `;
 
-const Texto: React.FC<TextoProps> = ({ text, color = 'default', ...rest }) => {
+const Texto: React.FC<TextoProps> = ({ text, color }) => {
   return (
-    <StyledTexto color={color} {...rest}>
+    <StyledTexto color={color}>
       {text}
     </StyledTexto>
   );

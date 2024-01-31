@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Paragrafo from './Paragraph/Paragrafo';
 import SubTitulo from './Paragraph/Subtitulo';
 import Texto from './Paragraph/Texto';
-import Aviso from './Paragraph/Aviso';
+import DadosMeteorologicos from './DadosMeteorologicos'
+import Alerta from './Alerta';
+
 
 
 const CardContainer = styled.div`
@@ -27,19 +29,50 @@ const Card: React.FC = () => {
         <SubTitulo boldWords={['25/07/2023']}text={'25/07/2023'} /> 
         <SubTitulo text={'Terça-Feira'}/>
         <Paragrafo text={'Sol e aumento de nuvens. Pancadas de chuva à tarde. À noite, muitas nuvens, mas sem chuva.'}/>
-        <Texto text="Texto padrão" />
-        <Texto text="Texto em #9c9c9c" color="#9c9c9c" />
-        <Texto text="Texto em #439c99" color="#439c99" />
-        <Texto text="Texto em #5dc0cb" color="#5dc0cb" />
-        <Texto text="Texto em #d48c89" color="#d48c89" />
-        <Texto text="Texto em #f19631" color="#f19631" />
-        
         <div>
-          <Aviso
-            text="Temperatura deste dia será maior do que a média do período"
+        <Texto text="Temperatura:" color="#9c9c9c" />
+          <DadosMeteorologicos
+            text="14º"
             $textColorOption="color1"
             $cardColorOption="color1"
             $stripeColorOption="color1"
+          />
+          <DadosMeteorologicos
+            text="30º"
+            $textColorOption="color2"
+            $cardColorOption="color2"
+            $stripeColorOption="color2"
+          />
+        </div>
+  
+        <div>
+          <DadosMeteorologicos
+            text="30º"
+            $textColorOption="color3"
+            $cardColorOption="color3"
+            $stripeColorOption="color3"
+          />
+        </div>
+        <div>
+          <DadosMeteorologicos
+            text="30º"
+            $textColorOption="color4"
+            $cardColorOption="color4"
+            $stripeColorOption="color4"
+          />
+        </div>
+        <div>
+          <DadosMeteorologicos
+            text="30º"
+          />
+        </div>
+
+        <div>
+          <Alerta
+            text="Temperatura deste dia será maior do que a média do período"
+            $textColorOption="color1"
+            $cardColorOption="color1"
+            //$stripeColorOption="color1"
           />
         </div>
 

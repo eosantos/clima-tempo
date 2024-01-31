@@ -1,7 +1,6 @@
-// Aviso.tsx
 import styled from 'styled-components';
 
-interface AvisoProps {
+interface AlertaProps {
   text: string;
   $textColorOption?: 'color1' | 'color2';
   $cardColorOption?: 'color1' | 'color2';
@@ -19,7 +18,7 @@ const getColorByOption = (option: 'color1' | 'color2'): string => {
   }
 };
 
-const StyledAviso = styled.p.attrs<{ $textColorOption: 'color1' | 'color2' }>((props) => ({
+const StyledAlerta = styled.p.attrs<{ $textColorOption: 'color1' | 'color2' }>((props) => ({
   $textColorOption: props.$textColorOption,
 }))`
   font-size: 8px;
@@ -50,14 +49,14 @@ const StyledCard = styled.div.attrs<{ $cardColorOption: 'color1' | 'color2'; $st
   }
 `;
 
-const Aviso: React.FC<AvisoProps> = ({ text, $textColorOption = 'color1', $cardColorOption, $stripeColorOption }) => {
+const Alerta: React.FC<AlertaProps> = ({ text, $textColorOption = 'color1', $cardColorOption, $stripeColorOption }) => {
   return (
     <StyledCard $cardColorOption={$cardColorOption || 'color1'} $stripeColorOption={$stripeColorOption || 'color1'}>
-      <StyledAviso $textColorOption={$textColorOption} >
+      <StyledAlerta $textColorOption={$textColorOption} >
         {text}
-      </StyledAviso>
+      </StyledAlerta>
     </StyledCard>
   );
 };
 
-export default Aviso;
+export default Alerta;

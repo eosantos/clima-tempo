@@ -13,6 +13,7 @@ const StyledTitulo = styled.h1`
   padding: 0px 20px 0px 20px;
 `;
 
+
 const Titulo: React.FC<TituloProps> = ({ boldWords = [], text }) => {
   const words = text.split(' ');
 
