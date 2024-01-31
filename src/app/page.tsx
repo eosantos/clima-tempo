@@ -1,13 +1,12 @@
 'use client';
-
-import Header from "@/components/Header";
-import Card from "@/components/Card";
+import Header from '@/components/Header';
+import Carousel from '@/components/Carousel';
 
 export default function Home() {
   return (
     <>
-      <Header />      
-      <Card />
+      <Header />
+      <Carousel />      
     </>
   );
 }
