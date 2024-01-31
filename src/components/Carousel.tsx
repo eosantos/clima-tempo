@@ -12,9 +12,8 @@ const GlobalStyle = createGlobalStyle`
 
 const CarouselContainer = styled.div`
   overflow: hidden;
-  top: 100%;
   width: 100%;
-  height: 100vh;
+  height: 45vh;
 `;
 
 const CarouselComponent: React.FC = () => {
@@ -24,11 +23,15 @@ const CarouselComponent: React.FC = () => {
       items: 3
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 840 },
+      items: 3
+    },
+    mobileL: {
+      breakpoint: { max: 840, min: 560 },
       items: 2
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 560, min: 0 },
       items: 1
     }
   };
