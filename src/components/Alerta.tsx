@@ -33,7 +33,7 @@ const StyledCard = styled.div.attrs<{ $cardColorOption: 'color1' | 'color2'; $st
   background: ${(props) => (props.$cardColorOption === 'color1' ? 'rgba(241,141,136,0.2)' : 'rgba(88,174,213,0.2)')};
   border-radius: 8px;
   padding: 5px 5px;
-  margin: 5px;
+  margin: 10px;
   position: relative;
 
   &::before {

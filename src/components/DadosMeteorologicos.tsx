@@ -39,7 +39,7 @@ const StyledCard = styled.div.attrs<{ $cardColorOption: 'color1' | 'color2' | 'c
   $stripeColorOption: props.$stripeColorOption,
 }))`
   background: ${(props) => applyOpacity(getColorByOption(props.$cardColorOption))};
-  border-radius: 8px;
+  border-radius: 3px;
   padding: 5px 5px;
   margin: 5px;
   position: relative;
@@ -51,9 +51,9 @@ const StyledCard = styled.div.attrs<{ $cardColorOption: 'color1' | 'color2' | 'c
     top: 0;
     left: 0;
     height: 100%;
-    width: 5px;
+  width: 3px;
     background-color: ${(props) => (getColorByOption(props.$stripeColorOption))};
-    border-radius: 6px 0 0 6px;
+    border-radius: 3px 0 0 3px;
   }
 `;
 
