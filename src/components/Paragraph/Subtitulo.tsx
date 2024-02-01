@@ -1,8 +1,6 @@
-'use client';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface SubTituloProps {
-  //boldWords?: string[];
   text: string;
   color?: string;
 }
@@ -13,21 +11,11 @@ const StyledSubTitulo = styled.h2`
 `;
 
 const SubTitulo: React.FC<SubTituloProps> = ({ text }) => {
-  //const words = text.match(/\S+/g) || [];
 
-return (
+  return (
     <StyledSubTitulo>
       {text}
-      {/* {words.map((word, index) => (
-        <span
-          key={index}
-          style={{ fontWeight: boldWords.includes(word) ? 'bold' : 'normal' }}
-        >
-          {word}
-          {index < words.length - 1 && ' '}
-        </span>
-      ))}*/}
-    </StyledSubTitulo> 
+    </StyledSubTitulo>
   );
 };
 

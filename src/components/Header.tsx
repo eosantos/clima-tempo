@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Titulo from './Paragraph/Titulo';
-import useCidade from '../hooks/useCidade';
+import React from "react";
+import styled from "styled-components";
+import Titulo from "./Paragraph/Titulo";
+import useCidade from "../hooks/useCidade";
 
 const HeaderContainer = styled.div`
   max-width: 920px;
@@ -37,9 +37,9 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <HeaderCard>
         <TopStripe />
-        <Titulo 
+        <Titulo
           text={`Temperatura para ${nomeCidade} para os próximos 7 dias`}
-          boldWords={['Varginha', '7', 'dias']}
+          boldWords={["Varginha", "7", "dias"]}
         />
       </HeaderCard>
     </HeaderContainer>

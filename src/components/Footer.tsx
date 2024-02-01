@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const FooterContainer = styled.div`
   background-color: #439c99;
@@ -8,9 +8,7 @@ const FooterContainer = styled.div`
 `;
 
 const Footer: React.FC = () => {
-  return (
-    <FooterContainer />
-  );
+  return <FooterContainer />;
 };
 
 export default Footer;

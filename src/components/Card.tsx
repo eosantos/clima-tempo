@@ -2,14 +2,11 @@
 import React from "react";
 import styled from "styled-components";
 import Paragrafo from "./Paragraph/Paragrafo";
-import SubTitulo from "./Paragraph/Subtitulo";
 import Texto from "./Paragraph/Texto";
 import DadosMeteorologicos from "./DadosMeteorologicos";
 import Alerta from "./Alerta";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import useClima from "@/hooks/useClima";
-
+import HeaderCard from "./HeaderCard";
 
 const CardContainer = styled.div`
   max-width: 290px;
@@ -37,12 +34,6 @@ const RowContainer = styled.div`
   border-bottom: 1px solid rgba(156, 156, 156, 0.2);
 `;
 
-const SubTituloContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-right: 60px;
-`;
-
 const TextContainer = styled.div`
   width: 100px;
   text-align: left;
@@ -54,35 +45,15 @@ const DadosContainer = styled.div`
   display: flex;  
 `;
 
-const ImgContainer = styled.div`
-  flex-shrink: 0;
-  padding-left: 30px;
-`;
-
 const Card: React.FC = () => {
   const { climaData } = useClima();
-
-  const getDayOfWeek = (dateString: string) => {
-    const date = new Date(dateString);
-    return format(date, "eeee", { locale: ptBR });
-  };
 
   return (
     <CardContainer>
       <CardWrapper>
         {climaData && (
-          <>
-            <RowContainer>
-              <ImgContainer>
-                {climaData.data[0].text_icon && (
-                  <img src={climaData.data[0].text_icon.icon} />
-                )}
-              </ImgContainer>
-              <SubTituloContainer>
-                <SubTitulo text={climaData.data[0].date_br}/>
-                <SubTitulo text={getDayOfWeek(climaData.data[0].date_br)} />
-              </SubTituloContainer>
-            </RowContainer>
+          <>           
+            <HeaderCard />            
 
             <Paragrafo text={climaData.data[0].text_icon.text.pt} />
 
@@ -139,7 +110,9 @@ const Card: React.FC = () => {
                 <Texto text="Chuva:" color="#9c9c9c" />
               </TextContainer>
               <DadosContainer>
-                <DadosMeteorologicos text={`${climaData.data[0].rain.probability} %`} />
+                <DadosMeteorologicos
+                  text={`${climaData.data[0].rain.probability} %`}
+                />
               </DadosContainer>
             </RowContainer>
 
