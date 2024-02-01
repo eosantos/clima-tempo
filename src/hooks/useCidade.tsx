@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useClimaTempo = () => {
+const useCidade = () => {
   const [nomeCidade, setNomeCidade] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -8,8 +8,8 @@ const useClimaTempo = () => {
   useEffect(() => {
     const fetchNomeCidade = async () => {
       try {
-        const apiKey = process.env.NEXT_PUBLIC_API_CLIMATEMPO_KEY;
-        const apiUrl = process.env.NEXT_PUBLIC_API_CLIMATEMPO_URL;
+        const apiKey = process.env.NEXT_PUBLIC_API_CIDADE_KEY;
+        const apiUrl = process.env.NEXT_PUBLIC_API_CIDADE_URL;
 
         if (!apiKey || !apiUrl) {
           throw new Error('Chaves ou URLs ausentes nas variáveis de ambiente.');
@@ -42,4 +42,4 @@ const useClimaTempo = () => {
   return { nomeCidade, loading, error };
 };
 
-export default useClimaTempo;
+export default useCidade;

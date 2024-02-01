@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Titulo from './Paragraph/Titulo';
-import useClimaTempo from '../hooks/useClimaTempo';
+import useCidade from '../hooks/useCidade';
 
 const HeaderContainer = styled.div`
   max-width: 920px;
@@ -23,7 +23,7 @@ const TopStripe = styled.div`
 `;
 
 const Header: React.FC = () => {
-  const { nomeCidade, loading, error } = useClimaTempo();
+  const { nomeCidade, loading, error } = useCidade();
 
   if (loading) {
     return <p>Carregando...</p>;

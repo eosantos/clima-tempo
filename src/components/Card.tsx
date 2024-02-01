@@ -1,24 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
-import Paragrafo from './Paragraph/Paragrafo';
-import SubTitulo from './Paragraph/Subtitulo';
-import Texto from './Paragraph/Texto';
-import DadosMeteorologicos from './DadosMeteorologicos';
-import Alerta from './Alerta';
+// Card.tsx
+import React from "react";
+import styled from "styled-components";
+import Paragrafo from "./Paragraph/Paragrafo";
+import SubTitulo from "./Paragraph/Subtitulo";
+import Texto from "./Paragraph/Texto";
+import DadosMeteorologicos from "./DadosMeteorologicos";
+import Alerta from "./Alerta";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import useClima from "@/hooks/useClima";
+
 
 const CardContainer = styled.div`
   max-width: 290px;
-  max-height: 215px;
   margin: 0 auto;
+  display: flex;
 `;
 
 const CardWrapper = styled.div`
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const RowContainer = styled.div`
@@ -28,8 +34,13 @@ const RowContainer = styled.div`
   width: 100%;
   position: relative;
   padding: 5px 0;
+  border-bottom: 1px solid rgba(156, 156, 156, 0.2);
+`;
 
-  border-bottom: 1px solid rgba(156,156,156, 0.2);
+const SubTituloContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
 `;
 
 const TextContainer = styled.div`
@@ -40,83 +51,106 @@ const TextContainer = styled.div`
 
 const DadosContainer = styled.div`
   width: 30;
-  display: flex;
-  justify-content: space-between;
+  display: flex;  
+`;
+
+const ImgContainer = styled.div`
+  flex-shrink: 0;
+  padding-left: 30px;
 `;
 
 const Card: React.FC = () => {
+  const { climaData } = useClima();
+
+  const getDayOfWeek = (dateString: string) => {
+    const date = new Date(dateString);
+    return format(date, "eeee", { locale: ptBR });
+  };
+
   return (
     <CardContainer>
       <CardWrapper>
-        <SubTitulo boldWords={['25/07/2023']} text={'25/07/2023'} />
-        <SubTitulo text={'Terça-Feira'} />
-        <Paragrafo text={'Sol e aumento de nuvens. Pancadas de chuva à tarde. À noite, muitas nuvens, mas sem chuva.'} />
+        {climaData && (
+          <>
+            <RowContainer>
+              <ImgContainer>
+                {climaData.data[0].text_icon && (
+                  <img src={climaData.data[0].text_icon.icon} />
+                )}
+              </ImgContainer>
+              <SubTituloContainer>
+                <SubTitulo text={climaData.data[0].date_br}/>
+                <SubTitulo text={getDayOfWeek(climaData.data[0].date_br)} />
+              </SubTituloContainer>
+            </RowContainer>
 
-        <RowContainer>
-          <TextContainer>
-            <Texto text="Temperatura:" color="#9c9c9c" />
-          </TextContainer>
-          <DadosContainer>
-            <DadosMeteorologicos
-              text="14º"
+            <Paragrafo text={climaData.data[0].text_icon.text.pt} />
+
+            <RowContainer>
+              <TextContainer>
+                <Texto text="Temperatura:" color="#9c9c9c" />
+              </TextContainer>
+              <DadosContainer>
+                <DadosMeteorologicos
+                  text={`${climaData.data[0].temperature.min}%`}
+                  $textColorOption="color1"
+                  $cardColorOption="color1"
+                  $stripeColorOption="color1"
+                />
+                <DadosMeteorologicos
+                  text={`${climaData.data[0].temperature.max}%`}
+                  $textColorOption="color2"
+                  $cardColorOption="color2"
+                  $stripeColorOption="color2"
+                />
+              </DadosContainer>
+            </RowContainer>
+
+            <RowContainer>
+              <TextContainer>
+                <Texto text="Umidade:" color="#9c9c9c" />
+              </TextContainer>
+              <DadosContainer>
+                <DadosMeteorologicos
+                  text={`${climaData.data[0].humidity.min}% - ${climaData.data[0].humidity.max}%`}
+                  $textColorOption="color3"
+                  $cardColorOption="color3"
+                  $stripeColorOption="color3"
+                />
+              </DadosContainer>
+            </RowContainer>
+
+            <RowContainer>
+              <TextContainer>
+                <Texto text="Sol:" color="#9c9c9c" />
+              </TextContainer>
+              <DadosContainer>
+                <DadosMeteorologicos
+                  text={`${climaData.data[0].sun.sunrise} - ${climaData.data[0].sun.sunset}`}
+                  $textColorOption="color4"
+                  $cardColorOption="color4"
+                  $stripeColorOption="color4"
+                />
+              </DadosContainer>
+            </RowContainer>
+
+            <RowContainer>
+              <TextContainer>
+                <Texto text="Chuva:" color="#9c9c9c" />
+              </TextContainer>
+              <DadosContainer>
+                <DadosMeteorologicos text={`${climaData.data[0].rain.probability} %`} />
+              </DadosContainer>
+            </RowContainer>
+
+            <Alerta
+              text="Temperatura deste dia será maior do que a média do período"
               $textColorOption="color1"
               $cardColorOption="color1"
               $stripeColorOption="color1"
             />
-            <DadosMeteorologicos
-              text="30º"
-              $textColorOption="color2"
-              $cardColorOption="color2"
-              $stripeColorOption="color2"
-            />
-          </DadosContainer>
-        </RowContainer>
-
-        <RowContainer>
-          <TextContainer>
-            <Texto text="Umidade:" color="#9c9c9c" />
-          </TextContainer>
-          <DadosContainer>
-            <DadosMeteorologicos
-              text="28% - 31%"
-              $textColorOption="color3"
-              $cardColorOption="color3"
-              $stripeColorOption="color3"
-            />
-          </DadosContainer>
-        </RowContainer>
-
-        <RowContainer>
-          <TextContainer>
-            <Texto text="Sol:" color="#9c9c9c" />
-          </TextContainer>
-          <DadosContainer>
-            <DadosMeteorologicos
-              text="06:30 - 18:30"
-              $textColorOption="color4"
-              $cardColorOption="color4"
-              $stripeColorOption="color4"
-            />
-          </DadosContainer>
-        </RowContainer>
-
-        <RowContainer>
-          <TextContainer>
-            <Texto text="Chuva:" color="#9c9c9c" />
-          </TextContainer>
-          <DadosContainer>
-            <DadosMeteorologicos
-              text="28%"
-            />
-          </DadosContainer>
-        </RowContainer>
-        
-        <Alerta
-          text="Temperatura deste dia será maior do que a média do período"
-          $textColorOption="color1"
-          $cardColorOption="color1"
-          $stripeColorOption="color1"
-        />        
+          </>
+        )}
       </CardWrapper>
     </CardContainer>
   );
