@@ -1,13 +1,14 @@
-'use client'
+import React from 'react';
 import styled from 'styled-components';
 import Titulo from './Paragraph/Titulo';
+import useClimaTempo from '../hooks/useClimaTempo';
 
 const HeaderContainer = styled.div`
   max-width: 920px;
   margin: 0 auto;
 `;
 
-const HeaderCard = styled.div`  
+const HeaderCard = styled.div`
   margin: 20px;
   padding-bottom: 20px;
   border-radius: 20px;
@@ -22,14 +23,24 @@ const TopStripe = styled.div`
 `;
 
 const Header: React.FC = () => {
+  const { nomeCidade, loading, error } = useClimaTempo();
+
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
+
+  if (error) {
+    return <p>Ocorreu um erro: {error}</p>;
+  }
+
   return (
     <HeaderContainer>
       <HeaderCard>
         <TopStripe />
         <Titulo 
-        text="Temperatura para São Paulo para os próximos 7 dias"
-        boldWords={['São', 'Paulo', '7', 'dias']}
-      />
+          text={`Temperatura para ${nomeCidade} para os próximos 7 dias`}
+          boldWords={['Varginha', '7', 'dias']}
+        />
       </HeaderCard>
     </HeaderContainer>
   );
