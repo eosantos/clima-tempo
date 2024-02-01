@@ -1,12 +1,12 @@
 // Card.tsx
 import React from "react";
 import styled from "styled-components";
-import Paragrafo from "./Paragraph/Paragrafo";
 import Texto from "./Paragraph/Texto";
 import DadosMeteorologicos from "./DadosMeteorologicos";
 import Alerta from "./Alerta";
 import useClima from "@/hooks/useClima";
 import HeaderCard from "./HeaderCard";
+import Informativo from "./Informativo";
 
 const CardContainer = styled.div`
   max-width: 290px;
@@ -53,10 +53,8 @@ const Card: React.FC = () => {
       <CardWrapper>
         {climaData && (
           <>           
-            <HeaderCard />            
-
-            <Paragrafo text={climaData.data[0].text_icon.text.pt} />
-
+            <HeaderCard />                        
+            <Informativo />
             <RowContainer>
               <TextContainer>
                 <Texto text="Temperatura:" color="#9c9c9c" />
