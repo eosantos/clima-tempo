@@ -42,10 +42,6 @@ const CarouselComponent: React.FC = () => {
       <CarouselContainer>
         <Carousel responsive={responsive}>
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </Carousel>
       </CarouselContainer>
     </>
