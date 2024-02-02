@@ -23,7 +23,7 @@ const StyledAlerta = styled.p.attrs<{ $textColorOption: "color1" | "color2" }>(
     $textColorOption: props.$textColorOption,
   })
 )`
-  font-size: 8px;
+  font-size: 10px;
   color: ${(props) => getColorByOption(props.$textColorOption)};
   padding: 0px 20px;
 `;

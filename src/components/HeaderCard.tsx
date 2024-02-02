@@ -10,13 +10,14 @@ const RowContainer = styled.div`
   align-items: center;
   width: 100%;
   position: relative; 
+  margin: 10px 0 10px;
 `;
 
 const SubTituloContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  padding-right: 70px;
+  align-items: flex-start;
+  padding-right: 50px;
 `;
 
 const ImgContainer = styled.div`
@@ -42,7 +43,7 @@ const HeaderCard: React.FC = () => {
             </ImgContainer>
           )}
           <SubTituloContainer>
-            <SubTitulo text={climaData.data[0].date_br} />
+            <SubTitulo bold fontSize="large" text={climaData.data[0].date_br} />
             <SubTitulo text={getDayOfWeek(climaData.data[0].date_br)} />
           </SubTituloContainer>
         </>
