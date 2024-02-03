@@ -6,12 +6,12 @@ interface SubTituloProps {
 }
 
 const StyledSubTitulo = styled.h2`
-  font-size: 22px;
+  font-size: 18px;
   color: ${(props) => props.color || "#9c9c9c"};
-  font-weight: bold;
+  font-weight: normal;
 `;
 
-const SubTitulo: React.FC<SubTituloProps> = ({
+const Subtitulo2: React.FC<SubTituloProps> = ({
   text, color
 }) => {
   return (
@@ -21,4 +21,4 @@ const SubTitulo: React.FC<SubTituloProps> = ({
   );
 };
 
-export default SubTitulo;
+export default Subtitulo2;

@@ -5,7 +5,7 @@ interface TextoProps {
   color: string;
 }
 
-const StyledTexto = styled.h3<TextoProps>`
+const StyledTexto = styled.h3`
   font-size: 12px;
   font-weight: bold;
   color: ${(props) => props.color || "#9c9c9c"};

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SubTitulo from "./Paragraph/Subtitulo";
+import SubTitulo2 from "./Paragraph/Subtitulo2";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -50,8 +51,8 @@ const HeaderCard: React.FC<HeaderCardProps> = ({ data }) => {
             </ImgContainer>
           )}
           <SubTituloContainer>
-            <SubTitulo bold fontSize="large" text={data.date_br} />
-            <SubTitulo text={getDayOfWeek(data.date_br)} />
+            <SubTitulo color="#9c9c9c" text={data.date_br} />
+            <SubTitulo2 color="#9c9c9c" text={getDayOfWeek(data.date_br)} />
           </SubTituloContainer>
         </>
       )}
