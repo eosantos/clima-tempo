@@ -68,16 +68,25 @@ const StyledCard = styled.div.attrs<{
   }
 `;
 
+type ColorOption = "color1" | "color2" | "color3" | "color4";
+
+interface EstiloDadosProps {
+  text: string;
+  $textColorOption?: ColorOption;
+  $cardColorOption?: ColorOption;
+  $stripeColorOption?: ColorOption;
+}
+
 const EstiloDados: React.FC<EstiloDadosProps> = ({
   text,
-  $textColorOption = "default",
-  $cardColorOption,
-  $stripeColorOption,
+  $textColorOption = "color1",
+  $cardColorOption = "color1",
+  $stripeColorOption = "color1",
 }) => {
   return (
     <StyledCard
-      $cardColorOption={$cardColorOption || "default"}
-      $stripeColorOption={$stripeColorOption || "default"}
+      $cardColorOption={$cardColorOption}
+      $stripeColorOption={$stripeColorOption}
     >
       <StyledDadosMeteorologicos $textColorOption={$textColorOption}>
         {text}
