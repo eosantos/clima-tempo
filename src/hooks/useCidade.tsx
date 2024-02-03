@@ -8,7 +8,7 @@ const useCidade = () => {
   useEffect(() => {
     const fetchNomeCidade = async () => {
       try {
-        const apiKey = process.env.NEXT_PUBLIC_API_CIDADE_KEY;
+        const apiKey = process.env.NEXT_PUBLIC_API_CIDADE_TOKEN;
         const apiUrl = process.env.NEXT_PUBLIC_API_CIDADE_URL;
 
         if (!apiKey || !apiUrl) {
