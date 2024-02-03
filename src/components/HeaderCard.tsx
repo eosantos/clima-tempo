@@ -1,8 +1,17 @@
 import styled from "styled-components";
 import SubTitulo from "./Paragraph/Subtitulo";
-import useClima from "@/hooks/useClima";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+
+
+interface HeaderCardProps {
+  data: {
+    text_icon: {
+      icon: string;
+    };
+    date_br: string;
+  };
+}
 
 const RowContainer = styled.div`
   display: flex;
@@ -25,9 +34,7 @@ const ImgContainer = styled.div`
   padding-left: 30px;
 `;
 
-const HeaderCard: React.FC = () => {
-  const { climaData } = useClima();
-
+const HeaderCard: React.FC<HeaderCardProps> = ({ data }) => {
   const getDayOfWeek = (dateString: string) => {
     const date = new Date(dateString);
     return format(date, "eeee", { locale: ptBR });
@@ -35,16 +42,16 @@ const HeaderCard: React.FC = () => {
 
   return (
     <RowContainer>
-      {climaData && (
+      {data && (
         <>
-          {climaData.data[0].text_icon && (
+          {data.text_icon && (
             <ImgContainer>
-              <img src={climaData.data[0].text_icon.icon} />
+              <img src={data.text_icon.icon} />
             </ImgContainer>
           )}
           <SubTituloContainer>
-            <SubTitulo bold fontSize="large" text={climaData.data[0].date_br} />
-            <SubTitulo text={getDayOfWeek(climaData.data[0].date_br)} />
+            <SubTitulo bold fontSize="large" text={data.date_br} />
+            <SubTitulo text={getDayOfWeek(data.date_br)} />
           </SubTituloContainer>
         </>
       )}

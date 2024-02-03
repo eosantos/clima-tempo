@@ -1,22 +1,38 @@
-import styled, { createGlobalStyle } from "styled-components";
+import React from "react";
 import Card from "./Card";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import useClima from "@/hooks/useClima";
 
-// Redefina os estilos globais para substituir os estilos padrão.
-const GlobalStyle = createGlobalStyle`
-  .react-multi-carousel-list {
-    overflow: visible;
-  }
-`;
-
-const CarouselContainer = styled.div`
-  overflow: hidden;
-  width: 100%;
-  height: 45vh;
-`;
+// Interface para representar a estrutura dos dados de clima
+interface ClimaData {
+  text_icon: {
+    icon: string;
+    text: {
+      pt: string;
+    };
+  };
+  date_br: string;
+  temperature: {
+    min: number;
+    max: number;
+  };
+  humidity: {
+    min: number;
+    max: number;
+  };
+  sun: {
+    sunrise: string;
+    sunset: string;
+  };
+  rain: {
+    probability: number;
+  };
+}
 
 const CarouselComponent: React.FC = () => {
+  const { climaData } = useClima();
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -38,12 +54,12 @@ const CarouselComponent: React.FC = () => {
 
   return (
     <>
-      <GlobalStyle />
-      <CarouselContainer>
-        <Carousel responsive={responsive}>
-          <Card />
-        </Carousel>
-      </CarouselContainer>
+      <Carousel responsive={responsive}>
+        {climaData?.data?.length > 0 &&
+          climaData.data.map((climaItem: ClimaData) => (
+            <Card key={climaItem.date_br} data={climaItem} />
+          ))}
+      </Carousel>
     </>
   );
 };

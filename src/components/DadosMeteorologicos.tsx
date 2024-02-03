@@ -3,6 +3,26 @@ import Texto from "./Paragraph/Texto";
 import EstiloDados from "./EstiloDados";
 import useClima from "@/hooks/useClima";
 
+interface DadosMeteorologicosProps {
+  data: {
+    temperature: {
+      min: number;
+      max: number;
+    };
+    humidity: {
+      min: number;
+      max: number;
+    };
+    sun: {
+      sunrise: string;
+      sunset: string;
+    };
+    rain: {
+      probability: number;
+    };
+  };
+}
+
 const ContinerWrapper = styled.div`
   margin: 0;
   padding: 0;
@@ -29,12 +49,12 @@ const DadosContainer = styled.div`
   display: flex;  
 `;
 
-const DadosMeteorologicos: React.FC = () => {
+const DadosMeteorologicos: React.FC<DadosMeteorologicosProps> = ({ data }) => {
   const { climaData } = useClima();
 
   return (
     <ContinerWrapper>
-      {climaData && (
+      {data && (
         <>
           <RowContainer>
             <TextContainer>
@@ -42,13 +62,13 @@ const DadosMeteorologicos: React.FC = () => {
             </TextContainer>
             <DadosContainer>
               <EstiloDados
-                text={`${climaData.data[0].temperature.min}%`}
+                text={`${data.temperature.min}%`}
                 $textColorOption="color1"
                 $cardColorOption="color1"
                 $stripeColorOption="color1"
               />
               <EstiloDados
-                text={`${climaData.data[0].temperature.max}%`}
+                text={`${data.temperature.max}%`}
                 $textColorOption="color2"
                 $cardColorOption="color2"
                 $stripeColorOption="color2"
@@ -62,7 +82,7 @@ const DadosMeteorologicos: React.FC = () => {
             </TextContainer>
             <DadosContainer>
               <EstiloDados
-                text={`${climaData.data[0].humidity.min}% - ${climaData.data[0].humidity.max}%`}
+                text={`${data.humidity.min}% - ${data.humidity.max}%`}
                 $textColorOption="color3"
                 $cardColorOption="color3"
                 $stripeColorOption="color3"
@@ -76,7 +96,7 @@ const DadosMeteorologicos: React.FC = () => {
             </TextContainer>
             <DadosContainer>
               <EstiloDados
-                text={`${climaData.data[0].sun.sunrise} - ${climaData.data[0].sun.sunset}`}
+                text={`${data.sun.sunrise} - ${data.sun.sunset}`}
                 $textColorOption="color4"
                 $cardColorOption="color4"
                 $stripeColorOption="color4"
@@ -89,7 +109,7 @@ const DadosMeteorologicos: React.FC = () => {
               <Texto text="Chuva:" color="#9c9c9c" />
             </TextContainer>
             <DadosContainer>
-              <EstiloDados text={`${climaData.data[0].rain.probability} %`} />
+              <EstiloDados text={`${data.rain.probability} %`} />
             </DadosContainer>
           </RowContainer>
         </>

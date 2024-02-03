@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import Paragrafo from "./Paragraph/Paragrafo";
-import useClima from "@/hooks/useClima";
+
+interface InformativoProps {
+  data: {
+    text_icon: {
+      text: {
+        pt: string;
+      };
+    };
+  };
+}
 
 const StyledCard = styled.div`
   background: rgba(156, 156, 156, 0.2);
@@ -9,14 +18,10 @@ const StyledCard = styled.div`
   margin: 5px;
 `;
 
-const Informativo: React.FC = () => {
-  const { climaData } = useClima();
-
+const Informativo: React.FC<InformativoProps> = ({ data }) => {
   return (
     <StyledCard>
-      {climaData && (
-        <Paragrafo text={climaData.data[0].text_icon.text.pt} />
-      )}
+      {data.text_icon.text && <Paragrafo text={data.text_icon.text.pt} />}
     </StyledCard>
   );
 };

@@ -7,11 +7,12 @@ import Footer from '@/components/Footer';
 const Container = styled.div`
   width: 100%;
 `;
+
 export default function Home() {
   return (
     <Container>
       <Header />
-      <Carousel />      
+        <Carousel />      
       <Footer />
     </Container>      
   );
