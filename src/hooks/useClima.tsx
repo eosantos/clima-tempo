@@ -28,7 +28,7 @@ const useClima = () => {
 
       setClimaData(data);
     } catch (error) {
-      console.error('Erro ao obter dados meteorológicos:', error.message);
+      console.error('Erro ao obter dados meteorológicos:', error);
       setError('Erro ao obter dados meteorológicos');
     } finally {
       setLoading(false);

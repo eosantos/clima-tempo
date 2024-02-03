@@ -29,7 +29,7 @@ const useCidade = () => {
 
         setNomeCidade(data.name);
       } catch (error) {
-        console.error('Erro ao obter o nome da cidade:', error.message);
+        console.error('Erro ao obter o nome da cidade:', error);
         setError('Erro ao obter o nome da cidade');
       } finally {
         setLoading(false);
