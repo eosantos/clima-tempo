@@ -62,4 +62,4 @@ NEXT_PUBLIC_API_CIDADE_URL='https://apiadvisor.climatempo.com.br/api/v1/locale/c
 NEXT_PUBLIC_API_CLIMATEMPO_API_URL='http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/6754/days/15'
 NEXT_PUBLIC_API_CLIMATEMPO_API_TOKEN=88aab0fd1b6f3acfca38d62916f21e42
 ```
-````
+````# clima-tempo
