@@ -1,25 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 
-interface ClimaData {
-  temperature: {
-    min: number;
-    max: number;
-  };
-  humidity: {
-    min: number;
-    max: number;
-  };
-  sun: {
-    sunrise: string;
-    sunset: string;
-  };
-  rain: {
-    probability: number;
-  };
-}
-
 const useClima = () => {
-  const [climaData, setClimaData] = useState<ClimaData | null>(null);
+  const [climaData, setClimaData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -32,32 +14,36 @@ const useClima = () => {
         throw new Error('Chaves ou URLs ausentes nas variáveis de ambiente.');
       }
 
-      const response = await fetch(`${apiUrl}?token=${apiToken}`);
+      let response;
 
-      if (!response.ok) {
-        throw new Error(
-          `Erro na requisição: ${response.status} - ${response.statusText}`
-        );
+      try {
+        response = await fetch(`${apiUrl}?token=${apiToken}`);
+
+        if (!response.ok) {
+          throw new Error(
+            `Erro na requisição: ${response.status} - ${response.statusText}`
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data || !data.name) {
+          throw new Error('Resposta inválida da API');
+        }
+
+        setClimaData(data);
+      } catch (error) {
+        console.error('Erro ao obter dados meteorológicos:', error);
+        console.log('Resposta da API:', response?.text());
+        setError('Erro ao obter dados meteorológicos');
+      } finally {
+        setLoading(false);
       }
-
-      const data: ClimaData = await response.json();
-
-      if (
-        !data ||
-        !data.sun ||
-        !data.temperature ||
-        !data.humidity ||
-        !data.rain
-      ) {
-        throw new Error('Resposta inválida da API');
-      }
-
-      setClimaData(data);
     } catch (error) {
-      console.error('Erro ao obter dados meteorológicos:', error);
-      setError('Erro ao obter dados meteorológicos');
-    } finally {
-      setLoading(false);
+      console.error(
+        'Erro ao obter dados meteorológicos (fora do bloco try):',
+        error
+      );
     }
   }, []);
 
