@@ -9,10 +9,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
-  ],
-  // "experimental": {
-  //   "forceSwcTransforms": true
-  // },
+  ],  
   "settings": {
     "react": {
       "version": "detect"
