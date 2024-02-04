@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Paragrafo from './Paragraph/Paragrafo';
+import Paragrafo from './Paragrafo/Paragrafo';
 
 interface InformativoProps {
   data: {
@@ -21,7 +21,9 @@ const StyledCard = styled.div`
 const Informativo: React.FC<InformativoProps> = ({ data }) => {
   return (
     <StyledCard>
-      {data.text_icon.text && <Paragrafo text={data.text_icon.text.pt} />}
+      {data.text_icon.text && (
+        <Paragrafo color="#9c9c9c" text={data.text_icon.text.pt} />
+      )}
     </StyledCard>
   );
 };

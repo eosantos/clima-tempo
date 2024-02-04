@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import SubTitulo from './Paragraph/Subtitulo';
-import SubTitulo2 from './Paragraph/Subtitulo2';
+import SubTitulo from './Paragrafo/Subtitulo';
+import SubTitulo2 from './Paragrafo/Subtitulo2';
 
-interface HeaderCardProps {
+interface PropsHeaderCard {
   data: {
     text_icon: {
       icon: string;
@@ -11,7 +11,7 @@ interface HeaderCardProps {
   };
 }
 
-const RowContainer = styled.div`
+const ContainerLinha = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,46 +20,46 @@ const RowContainer = styled.div`
   margin: 10px 0 10px;
 `;
 
-const SubTituloContainer = styled.div`
+const ContainerSubTitulo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-right: 50px;
 `;
 
-const ImgContainer = styled.div`
+const ContainerImagem = styled.div`
   flex-shrink: 0;
   padding-left: 30px;
 `;
 
-const HeaderCard: React.FC<HeaderCardProps> = ({ data }) => {
-  const getDayOfWeek = (dateString: string) => {
-    const dateParts = dateString.split('/');
-    const day = parseInt(dateParts[0], 10);
-    const month = parseInt(dateParts[1], 10) - 1; // Ajuste do índice do mês
-    const year = parseInt(dateParts[2], 10);
+const HeaderCard: React.FC<PropsHeaderCard> = ({ data }) => {
+  const obterDiaDaSemana = (dateString: string) => {
+    const partesData = dateString.split('/');
+    const dia = parseInt(partesData[0], 10);
+    const mes = parseInt(partesData[1], 10) - 1; // Ajuste do índice do mês
+    const ano = parseInt(partesData[2], 10);
 
-    const date = new Date(year, month, day);
+    const data = new Date(ano, mes, dia);
 
-    const options: Intl.DateTimeFormatOptions = { weekday: 'long' };
-    return date.toLocaleDateString('pt-BR', options);
+    const opcoes: Intl.DateTimeFormatOptions = { weekday: 'long' };
+    return data.toLocaleDateString('pt-BR', opcoes);
   };
   return (
-    <RowContainer>
+    <ContainerLinha>
       {data && (
         <>
           {data.text_icon && (
-            <ImgContainer>
+            <ContainerImagem>
               <img src={data.text_icon.icon} />
-            </ImgContainer>
+            </ContainerImagem>
           )}
-          <SubTituloContainer>
+          <ContainerSubTitulo>
             <SubTitulo color="#9c9c9c" text={data.date_br} />
-            <SubTitulo2 color="#9c9c9c" text={getDayOfWeek(data.date_br)} />
-          </SubTituloContainer>
+            <SubTitulo2 color="#9c9c9c" text={obterDiaDaSemana(data.date_br)} />
+          </ContainerSubTitulo>
         </>
       )}
-    </RowContainer>
+    </ContainerLinha>
   );
 };
 

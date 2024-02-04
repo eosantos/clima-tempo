@@ -1,42 +1,42 @@
 import styled from 'styled-components';
 
-interface AlertaProps {
+interface PropsAlerta {
   text: string;
-  $textColorOption?: 'color1' | 'color2';
-  $cardColorOption?: 'color1' | 'color2';
-  $stripeColorOption?: 'color1' | 'color2';
+  $opcaoCorTexto?: 'cor1' | 'cor2';
+  $opcaoCorCard?: 'cor1' | 'cor2';
+  $opcaoCorFaixa?: 'cor1' | 'cor2';
 }
 
-const getColorByOption = (option: 'color1' | 'color2'): string => {
-  switch (option) {
-    case 'color1':
+const obterCorPorOpcao = (opcao: 'cor1' | 'cor2'): string => {
+  switch (opcao) {
+    case 'cor1':
       return '#f18d88';
-    case 'color2':
+    case 'cor2':
       return '#58aed5';
     default:
       return '#9c9c9c';
   }
 };
 
-const StyledAlerta = styled.p.attrs<{ $textColorOption: 'color1' | 'color2' }>(
+const EstilizadoAlerta = styled.p.attrs<{ $opcaoCorTexto: 'cor1' | 'cor2' }>(
   (props) => ({
-    $textColorOption: props.$textColorOption
+    $opcaoCorTexto: props.$opcaoCorTexto
   })
 )`
   font-size: 10px;
-  color: ${(props) => getColorByOption(props.$textColorOption)};
+  color: ${(props) => obterCorPorOpcao(props.$opcaoCorTexto)};
   padding: 0px 20px;
 `;
 
-const StyledCard = styled.div.attrs<{
-  $cardColorOption: 'color1' | 'color2';
-  $stripeColorOption: 'color1' | 'color2';
+const EstilizadoCard = styled.div.attrs<{
+  $opcaoCorCard: 'cor1' | 'cor2';
+  $opcaoCorFaixa: 'cor1' | 'cor2';
 }>((props) => ({
-  $cardColorOption: props.$cardColorOption,
-  $stripeColorOption: props.$stripeColorOption
+  $opcaoCorCard: props.$opcaoCorCard,
+  $opcaoCorFaixa: props.$opcaoCorFaixa
 }))`
   background: ${(props) =>
-    props.$cardColorOption === 'color1'
+    props.$opcaoCorCard === 'cor1'
       ? 'rgba(241,141,136,0.2)'
       : 'rgba(88,174,213,0.2)'};
   border-radius: 8px;
@@ -52,24 +52,26 @@ const StyledCard = styled.div.attrs<{
     left: 0;
     height: 100%;
     width: 5px;
-    background-color: ${(props) => getColorByOption(props.$stripeColorOption)};
+    background-color: ${(props) => obterCorPorOpcao(props.$opcaoCorFaixa)};
     border-radius: 6px 0 0 6px;
   }
 `;
 
-const Alerta: React.FC<AlertaProps> = ({
+const Alerta: React.FC<PropsAlerta> = ({
   text,
-  $textColorOption = 'color1',
-  $cardColorOption,
-  $stripeColorOption
+  $opcaoCorTexto = 'cor1',
+  $opcaoCorCard,
+  $opcaoCorFaixa
 }) => {
   return (
-    <StyledCard
-      $cardColorOption={$cardColorOption || 'color1'}
-      $stripeColorOption={$stripeColorOption || 'color1'}
+    <EstilizadoCard
+      $opcaoCorCard={$opcaoCorCard || 'cor1'}
+      $opcaoCorFaixa={$opcaoCorFaixa || 'cor1'}
     >
-      <StyledAlerta $textColorOption={$textColorOption}>{text}</StyledAlerta>
-    </StyledCard>
+      <EstilizadoAlerta $opcaoCorTexto={$opcaoCorTexto}>
+        {text}
+      </EstilizadoAlerta>
+    </EstilizadoCard>
   );
 };
 

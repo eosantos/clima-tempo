@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Titulo from './Paragraph/Titulo';
+import Titulo from './Paragrafo/Titulo';
 import useCidade from '../hooks/useCidade';
 
 const HeaderContainer = styled.div`
@@ -15,7 +15,7 @@ const HeaderCard = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
-const TopStripe = styled.div`
+const FaixaSuperior = styled.div`
   border-radius: 15px 15px 0 0;
   margin-bottom: 20px;
   background-color: #439c99;
@@ -36,10 +36,10 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <HeaderCard>
-        <TopStripe />
+        <FaixaSuperior />
         <Titulo
-          text={`Temperatura para ${nomeCidade} para os próximos 7 dias`}
-          boldWords={['Varginha', '7', 'dias']}
+          texto={`Temperatura para ${nomeCidade} para os próximos 7 dias`}
+          Negrito={['Varginha', '7', 'dias']}
         />
       </HeaderCard>
     </HeaderContainer>

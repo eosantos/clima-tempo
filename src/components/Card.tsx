@@ -5,7 +5,7 @@ import Informativo from './Informativo';
 import DadosMeteorologicos from './DadosMeteorologicos';
 import Alerta from './Alerta';
 
-interface CardProps {
+interface PropsCard {
   data: {
     text_icon: {
       icon: string;
@@ -32,13 +32,13 @@ interface CardProps {
   };
 }
 
-const CardContainer = styled.div`
+const ContainerCard = styled.div`
   max-width: 290px;
   margin: 0 auto;
   display: flex;
 `;
 
-const CardWrapper = styled.div`
+const EstiloCard = styled.div`
   margin: 10px;
   padding: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -48,25 +48,20 @@ const CardWrapper = styled.div`
   flex: 1;
 `;
 
-const Card: React.FC<CardProps> = ({ data }) => {
+const Card: React.FC<PropsCard> = ({ data }) => {
   return (
-    <CardContainer>
+    <ContainerCard>
       <>
         {data && (
-          <CardWrapper key={data.date_br}>
+          <EstiloCard key={data.date_br}>
             <HeaderCard data={data} />
             <Informativo data={data} />
             <DadosMeteorologicos data={data} />
-            <Alerta
-              text="Temperatura deste dia será maior do que a média do período"
-              $textColorOption="color1"
-              $cardColorOption="color1"
-              $stripeColorOption="color1"
-            />
-          </CardWrapper>
+            <Alerta text="Temperatura deste dia será maior do que a média do período" />
+          </EstiloCard>
         )}
       </>
-    </CardContainer>
+    </ContainerCard>
   );
 };
 
