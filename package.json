@@ -12,7 +12,8 @@
     "env:hmg": "cross-env ACTIVE_ENV=development",
     "env:prod": "cross-env ACTIVE_ENV=production",
     "start:prod": "npm run env:prod next start",
-    "vercel-build": "next build"
+    "vercel-build": "next build --no-linting",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@types/styled-components": "^5.1.34",
@@ -44,5 +45,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.4",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "extends": ["next", "next/core-web-vitals"]
   }
 }
