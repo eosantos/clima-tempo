@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Texto from './Paragraph/Texto';
 import EstiloDados from './EstiloDados';
+import { format } from 'date-fns';
 
 interface DadosMeteorologicosProps {
   data: {
@@ -48,6 +49,11 @@ const DadosContainer = styled.div`
   display: flex;
 `;
 
+const getHourAndMinute = (timeString: string) => {
+  const date = new Date(`2000-01-01T${timeString}`);
+  return format(date, 'HH:mm');
+};
+
 const DadosMeteorologicos: React.FC<DadosMeteorologicosProps> = ({ data }) => {
   return (
     <ContinerWrapper>
@@ -93,7 +99,7 @@ const DadosMeteorologicos: React.FC<DadosMeteorologicosProps> = ({ data }) => {
             </TextContainer>
             <DadosContainer>
               <EstiloDados
-                text={`${data.sun.sunrise} - ${data.sun.sunset}`}
+                text={`${getHourAndMinute(data.sun.sunrise)} - ${getHourAndMinute(data.sun.sunset)}`}
                 $textColorOption="color4"
                 $cardColorOption="color4"
                 $stripeColorOption="color4"
