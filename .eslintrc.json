@@ -10,9 +10,9 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "experimental": {
-    "forceSwcTransforms": true
-  },
+  // "experimental": {
+  //   "forceSwcTransforms": true
+  // },
   "settings": {
     "react": {
       "version": "detect"
