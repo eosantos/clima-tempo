@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import SubTitulo from './Paragraph/Subtitulo';
 import SubTitulo2 from './Paragraph/Subtitulo2';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
 
 interface HeaderCardProps {
   data: {
@@ -36,10 +34,16 @@ const ImgContainer = styled.div`
 
 const HeaderCard: React.FC<HeaderCardProps> = ({ data }) => {
   const getDayOfWeek = (dateString: string) => {
-    const date = new Date(dateString);
-    return format(date, 'eeee', { locale: ptBR });
-  };
+    const dateParts = dateString.split('/');
+    const day = parseInt(dateParts[0], 10);
+    const month = parseInt(dateParts[1], 10) - 1; // Ajuste do índice do mês
+    const year = parseInt(dateParts[2], 10);
 
+    const date = new Date(year, month, day);
+
+    const options: Intl.DateTimeFormatOptions = { weekday: 'long' };
+    return date.toLocaleDateString('pt-BR', options);
+  };
   return (
     <RowContainer>
       {data && (
