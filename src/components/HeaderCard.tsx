@@ -1,9 +1,8 @@
-import styled from "styled-components";
-import SubTitulo from "./Paragraph/Subtitulo";
-import SubTitulo2 from "./Paragraph/Subtitulo2";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
-
+import styled from 'styled-components';
+import SubTitulo from './Paragraph/Subtitulo';
+import SubTitulo2 from './Paragraph/Subtitulo2';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 interface HeaderCardProps {
   data: {
@@ -19,7 +18,7 @@ const RowContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: relative; 
+  position: relative;
   margin: 10px 0 10px;
 `;
 
@@ -38,7 +37,7 @@ const ImgContainer = styled.div`
 const HeaderCard: React.FC<HeaderCardProps> = ({ data }) => {
   const getDayOfWeek = (dateString: string) => {
     const date = new Date(dateString);
-    return format(date, "eeee", { locale: ptBR });
+    return format(date, 'eeee', { locale: ptBR });
   };
 
   return (

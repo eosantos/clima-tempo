@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <Container>
       <Header />
-        <Carousel />      
+      <Carousel />
       <Footer />
-    </Container>      
+    </Container>
   );
 }

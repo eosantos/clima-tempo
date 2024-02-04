@@ -1,26 +1,26 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface AlertaProps {
   text: string;
-  $textColorOption?: "color1" | "color2";
-  $cardColorOption?: "color1" | "color2";
-  $stripeColorOption?: "color1" | "color2";
+  $textColorOption?: 'color1' | 'color2';
+  $cardColorOption?: 'color1' | 'color2';
+  $stripeColorOption?: 'color1' | 'color2';
 }
 
-const getColorByOption = (option: "color1" | "color2"): string => {
+const getColorByOption = (option: 'color1' | 'color2'): string => {
   switch (option) {
-    case "color1":
-      return "#f18d88";
-    case "color2":
-      return "#58aed5";
+    case 'color1':
+      return '#f18d88';
+    case 'color2':
+      return '#58aed5';
     default:
-      return "#9c9c9c";
+      return '#9c9c9c';
   }
 };
 
-const StyledAlerta = styled.p.attrs<{ $textColorOption: "color1" | "color2" }>(
+const StyledAlerta = styled.p.attrs<{ $textColorOption: 'color1' | 'color2' }>(
   (props) => ({
-    $textColorOption: props.$textColorOption,
+    $textColorOption: props.$textColorOption
   })
 )`
   font-size: 10px;
@@ -29,16 +29,16 @@ const StyledAlerta = styled.p.attrs<{ $textColorOption: "color1" | "color2" }>(
 `;
 
 const StyledCard = styled.div.attrs<{
-  $cardColorOption: "color1" | "color2";
-  $stripeColorOption: "color1" | "color2";
+  $cardColorOption: 'color1' | 'color2';
+  $stripeColorOption: 'color1' | 'color2';
 }>((props) => ({
   $cardColorOption: props.$cardColorOption,
-  $stripeColorOption: props.$stripeColorOption,
+  $stripeColorOption: props.$stripeColorOption
 }))`
   background: ${(props) =>
-    props.$cardColorOption === "color1"
-      ? "rgba(241,141,136,0.2)"
-      : "rgba(88,174,213,0.2)"};
+    props.$cardColorOption === 'color1'
+      ? 'rgba(241,141,136,0.2)'
+      : 'rgba(88,174,213,0.2)'};
   border-radius: 8px;
   padding: 5px 5px;
   margin: 10px;
@@ -59,14 +59,14 @@ const StyledCard = styled.div.attrs<{
 
 const Alerta: React.FC<AlertaProps> = ({
   text,
-  $textColorOption = "color1",
+  $textColorOption = 'color1',
   $cardColorOption,
-  $stripeColorOption,
+  $stripeColorOption
 }) => {
   return (
     <StyledCard
-      $cardColorOption={$cardColorOption || "color1"}
-      $stripeColorOption={$stripeColorOption || "color1"}
+      $cardColorOption={$cardColorOption || 'color1'}
+      $stripeColorOption={$stripeColorOption || 'color1'}
     >
       <StyledAlerta $textColorOption={$textColorOption}>{text}</StyledAlerta>
     </StyledCard>

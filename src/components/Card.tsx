@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import HeaderCard from "./HeaderCard";
-import Informativo from "./Informativo";
-import DadosMeteorologicos from "./DadosMeteorologicos";
-import Alerta from "./Alerta";
+import React from 'react';
+import styled from 'styled-components';
+import HeaderCard from './HeaderCard';
+import Informativo from './Informativo';
+import DadosMeteorologicos from './DadosMeteorologicos';
+import Alerta from './Alerta';
 
 interface CardProps {
   data: {

@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import Texto from "./Paragraph/Texto";
-import EstiloDados from "./EstiloDados";
-import useClima from "@/hooks/useClima";
+import styled from 'styled-components';
+import Texto from './Paragraph/Texto';
+import EstiloDados from './EstiloDados';
 
 interface DadosMeteorologicosProps {
   data: {
@@ -46,12 +45,10 @@ const TextContainer = styled.div`
 
 const DadosContainer = styled.div`
   width: 30;
-  display: flex;  
+  display: flex;
 `;
 
 const DadosMeteorologicos: React.FC<DadosMeteorologicosProps> = ({ data }) => {
-  const { climaData } = useClima();
-
   return (
     <ContinerWrapper>
       {data && (

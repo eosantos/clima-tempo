@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Paragrafo from "./Paragraph/Paragrafo";
+import styled from 'styled-components';
+import Paragrafo from './Paragraph/Paragrafo';
 
 interface InformativoProps {
   data: {

@@ -1,7 +1,25 @@
 import { useEffect, useState, useCallback } from 'react';
 
+interface ClimaData {
+  temperature: {
+    min: number;
+    max: number;
+  };
+  humidity: {
+    min: number;
+    max: number;
+  };
+  sun: {
+    sunrise: string;
+    sunset: string;
+  };
+  rain: {
+    probability: number;
+  };
+}
+
 const useClima = () => {
-  const [climaData, setClimaData] = useState<any>(null);
+  const [climaData, setClimaData] = useState<ClimaData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -17,12 +35,20 @@ const useClima = () => {
       const response = await fetch(`${apiUrl}?token=${apiToken}`);
 
       if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+        throw new Error(
+          `Erro na requisição: ${response.status} - ${response.statusText}`
+        );
       }
 
-      const data = await response.json();
+      const data: ClimaData = await response.json();
 
-      if (!data || !data.name) {
+      if (
+        !data ||
+        !data.sun ||
+        !data.temperature ||
+        !data.humidity ||
+        !data.rain
+      ) {
         throw new Error('Resposta inválida da API');
       }
 

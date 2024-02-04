@@ -18,7 +18,9 @@ const useCidade = () => {
         const response = await fetch(`${apiUrl}?token=${apiKey}`);
 
         if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+          throw new Error(
+            `Erro na requisição: ${response.status} - ${response.statusText}`
+          );
         }
 
         const data = await response.json();

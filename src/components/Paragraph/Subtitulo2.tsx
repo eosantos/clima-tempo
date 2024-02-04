@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface SubTituloProps {
   text: string;
@@ -7,18 +7,12 @@ interface SubTituloProps {
 
 const StyledSubTitulo = styled.h2`
   font-size: 18px;
-  color: ${(props) => props.color || "#9c9c9c"};
+  color: ${(props) => props.color || '#9c9c9c'};
   font-weight: normal;
 `;
 
-const Subtitulo2: React.FC<SubTituloProps> = ({
-  text, color
-}) => {
-  return (
-    <StyledSubTitulo color={color}>
-      {text} 
-    </StyledSubTitulo>
-  );
+const Subtitulo2: React.FC<SubTituloProps> = ({ text, color }) => {
+  return <StyledSubTitulo color={color}>{text}</StyledSubTitulo>;
 };
 
 export default Subtitulo2;

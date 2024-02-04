@@ -1,26 +1,26 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface EstiloDadosProps {
   text: string;
-  $textColorOption?: "color1" | "color2" | "color3" | "color4";
-  $cardColorOption?: "color1" | "color2" | "color3" | "color4";
-  $stripeColorOption?: "color1" | "color2" | "color3" | "color4";
+  $textColorOption?: 'color1' | 'color2' | 'color3' | 'color4';
+  $cardColorOption?: 'color1' | 'color2' | 'color3' | 'color4';
+  $stripeColorOption?: 'color1' | 'color2' | 'color3' | 'color4';
 }
 
 const getColorByOption = (
-  option: "color1" | "color2" | "color3" | "color4"
+  option: 'color1' | 'color2' | 'color3' | 'color4'
 ): string => {
   switch (option) {
-    case "color1":
-      return "#58aed5";
-    case "color2":
-      return "#f18d88";
-    case "color3":
-      return "#439c99";
-    case "color4":
-      return "#f19631";
+    case 'color1':
+      return '#58aed5';
+    case 'color2':
+      return '#f18d88';
+    case 'color3':
+      return '#439c99';
+    case 'color4':
+      return '#f19631';
     default:
-      return "#9c9c9c";
+      return '#9c9c9c';
   }
 };
 
@@ -32,9 +32,9 @@ const applyOpacity = (color: string): string => {
 };
 
 const StyledDadosMeteorologicos = styled.p.attrs<{
-  $textColorOption: "color1" | "color2" | "color3" | "color4";
+  $textColorOption: 'color1' | 'color2' | 'color3' | 'color4';
 }>((props) => ({
-  $textColorOption: props.$textColorOption,
+  $textColorOption: props.$textColorOption
 }))`
   font-size: 8px;
   color: ${(props) => getColorByOption(props.$textColorOption)};
@@ -42,11 +42,11 @@ const StyledDadosMeteorologicos = styled.p.attrs<{
 `;
 
 const StyledCard = styled.div.attrs<{
-  $cardColorOption: "color1" | "color2" | "color3" | "color4";
-  $stripeColorOption: "color1" | "color2" | "color3" | "color4";
+  $cardColorOption: 'color1' | 'color2' | 'color3' | 'color4';
+  $stripeColorOption: 'color1' | 'color2' | 'color3' | 'color4';
 }>((props) => ({
   $cardColorOption: props.$cardColorOption,
-  $stripeColorOption: props.$stripeColorOption,
+  $stripeColorOption: props.$stripeColorOption
 }))`
   background: ${(props) =>
     applyOpacity(getColorByOption(props.$cardColorOption))};
@@ -62,13 +62,13 @@ const StyledCard = styled.div.attrs<{
     top: 0;
     left: 0;
     height: 100%;
-  width: 3px;
+    width: 3px;
     background-color: ${(props) => getColorByOption(props.$stripeColorOption)};
     border-radius: 3px 0 0 3px;
   }
 `;
 
-type ColorOption = "color1" | "color2" | "color3" | "color4";
+type ColorOption = 'color1' | 'color2' | 'color3' | 'color4';
 
 interface EstiloDadosProps {
   text: string;
@@ -79,9 +79,9 @@ interface EstiloDadosProps {
 
 const EstiloDados: React.FC<EstiloDadosProps> = ({
   text,
-  $textColorOption = "color1",
-  $cardColorOption = "color1",
-  $stripeColorOption = "color1",
+  $textColorOption = 'color1',
+  $cardColorOption = 'color1',
+  $stripeColorOption = 'color1'
 }) => {
   return (
     <StyledCard

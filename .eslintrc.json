@@ -28,7 +28,16 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["**/*.css", ".snap"],
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier",
+  "jsx-a11y",
+  "import",
+  "simple-import-sort",
+  "eslint-plugin-react",
+  "eslint-plugin-react-hooks",
+  "eslint-plugin-prettier",
+  "eslint-plugin-simple-import-sort",
+  "eslint-plugin-import",
+  "eslint-plugin-jsx-a11y" ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
