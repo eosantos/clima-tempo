@@ -1,7 +1,34 @@
 import { useEffect, useState, useCallback } from 'react';
 
+export interface ClimaData {
+  text_icon: {
+    icon: string;
+    text: {
+      pt: string;
+    };
+  };
+  date_br: string;
+  temperature: {
+    min: number;
+    max: number;
+  };
+  humidity: {
+    min: number;
+    max: number;
+  };
+  sun: {
+    sunrise: string;
+    sunset: string;
+  };
+  rain: {
+    probability: number;
+  };
+}
+
 const useClima = () => {
-  const [climaData, setClimaData] = useState(null);
+  const [climaData, setClimaData] = useState<{ data: ClimaData[] } | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -31,7 +58,9 @@ const useClima = () => {
           throw new Error('Resposta inválida da API');
         }
 
-        setClimaData(data);
+        if (data) {
+          setClimaData(data);
+        }
       } catch (error) {
         console.error('Erro ao obter dados meteorológicos:', error);
         console.log('Resposta da API:', response?.text());
@@ -40,15 +69,16 @@ const useClima = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.error(
-        'Erro ao obter dados meteorológicos (fora do bloco try):',
-        error
-      );
+      console.error('Erro ao obter dados meteorológicos:', error);
     }
   }, []);
 
   useEffect(() => {
-    fetchClimaData();
+    const fetchData = async () => {
+      await fetchClimaData();
+    };
+
+    fetchData();
   }, [fetchClimaData]);
 
   return { climaData, loading, error };

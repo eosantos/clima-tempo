@@ -2,36 +2,20 @@ import React from 'react';
 import Card from './Card';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import useClima from '@/hooks/useClima';
-
-// Interface para representar a estrutura dos dados de clima
-interface ClimaData {
-  text_icon: {
-    icon: string;
-    text: {
-      pt: string;
-    };
-  };
-  date_br: string;
-  temperature: {
-    min: number;
-    max: number;
-  };
-  humidity: {
-    min: number;
-    max: number;
-  };
-  sun: {
-    sunrise: string;
-    sunset: string;
-  };
-  rain: {
-    probability: number;
-  };
-}
+import useClima, { ClimaData } from '@/hooks/useClima';
 
 const CarouselComponent: React.FC = () => {
-  const { climaData } = useClima();
+  const { climaData, loading, error } = useClima();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const data = climaData?.data || [];
 
   const responsive = {
     desktop: {
@@ -55,10 +39,9 @@ const CarouselComponent: React.FC = () => {
   return (
     <>
       <Carousel responsive={responsive}>
-        {climaData?.data?.length > 0 &&
-          climaData.data.map((climaItem: ClimaData) => (
-            <Card key={climaItem.date_br} data={climaItem} />
-          ))}
+        {data.map((climaItem: ClimaData) => (
+          <Card key={climaItem.date_br} data={climaItem} />
+        ))}
       </Carousel>
     </>
   );

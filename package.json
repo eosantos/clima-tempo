@@ -12,7 +12,7 @@
     "env:hmg": "cross-env ACTIVE_ENV=development",
     "env:prod": "cross-env ACTIVE_ENV=production",
     "start:prod": "npm run env:prod next start",
-    "vercel-build": "next build --no-linting",
+    "vercel-build": "next build",
     "prettier": "prettier --write ."
   },
   "dependencies": {
