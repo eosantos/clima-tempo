@@ -6,6 +6,15 @@
 
 Página web que mostre a previsão meteorológica para os próximos 7 dias para a cidade de Varginha - MG.
 
+<br>
+<hr>
+<p align="center">
+	<img width="190" src="src/assets/desktop.png">
+  <img width="190" src="src/assets/mobile.png">
+</p>
+<hr>
+<br>
+
 
 ### Ferramentas
 
