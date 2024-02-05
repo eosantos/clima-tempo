@@ -9,8 +9,8 @@ Página web que mostre a previsão meteorológica para os próximos 7 dias para 
 <br>
 <hr>
 <p align="center">
-	<img width="190" src="src/assets/desktop.png">
-  <img width="190" src="src/assets/mobile.png">
+	<img width="190" src="src/assets/to_readme/desktop.png">
+  <img width="190" src="src/assets/to_readme/mobile.png">
 </p>
 <hr>
 <br>
