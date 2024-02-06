@@ -5,10 +5,16 @@ import Informativo from './Informativo';
 import DadosMeteorologicos from './DadosMeteorologicos';
 import Alerta from './Alerta';
 
-interface PropsCard {
+export interface PropsCard {
   data: {
     text_icon: {
-      icon: string;
+      icon: {
+        dawn: string;
+        morning: string;
+        afternoon: string;
+        night: string;
+        day: string;
+      };
       text: {
         pt: string;
       };

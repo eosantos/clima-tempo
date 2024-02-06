@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import SubTitulo from './Paragrafo/Subtitulo';
 import SubTitulo2 from './Paragrafo/Subtitulo2';
+import ClimaIcone from './IconeClima';
 
 interface PropsHeaderCard {
   data: {
     text_icon: {
-      icon: string;
+      icon: {
+        dawn: string;
+        morning: string;
+        afternoon: string;
+        night: string;
+        day: string;
+      };
     };
     date_br: string;
   };
@@ -50,7 +57,7 @@ const HeaderCard: React.FC<PropsHeaderCard> = ({ data }) => {
         <>
           {data.text_icon && (
             <ContainerImagem>
-              <img src={data.text_icon.icon} />
+              <ClimaIcone data={data} />
             </ContainerImagem>
           )}
           <ContainerSubTitulo>

@@ -2,7 +2,13 @@ import { useEffect, useState, useCallback } from 'react';
 
 export interface ClimaData {
   text_icon: {
-    icon: string;
+    icon: {
+      dawn: string;
+      morning: string;
+      afternoon: string;
+      night: string;
+      day: string;
+    };
     text: {
       pt: string;
     };
