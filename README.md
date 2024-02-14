@@ -8,10 +8,10 @@ Página web que mostre a previsão meteorológica para os próximos 7 dias para 
 
 <br>
 <hr>
-<p align="center">
+<div align="center">
 	<img width="190" src="public/Img/assets/to_readme/Tela_001.png">
-  <img width="190" src="public/Img/assets/to_readme/Tela_002.png">
-</p>
+	<img width="190" src="public/Img/assets/to_readme/Tela_002.png">
+</div>
 <hr>
 <br>
 
@@ -71,4 +71,4 @@ NEXT_PUBLIC_API_CIDADE_URL='https://apiadvisor.climatempo.com.br/api/v1/locale/c
 NEXT_PUBLIC_API_CLIMATEMPO_API_URL='http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/6754/days/15'
 NEXT_PUBLIC_API_CLIMATEMPO_API_TOKEN=88aab0fd1b6f3acfca38d62916f21e42
 ```
-````# clima-tempo
+````
